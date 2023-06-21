@@ -19,7 +19,7 @@ async def parse_text(agent: Agent, text):
 
 async def main():
     # Load the trained model
-    agent = await load_agent("models/20230609-220103-parallel-opacity.tar.gz")
+    agent = await load_agent("models/20230621-125102-quiet-phrase.tar.gz")
 
     # Define the text to predict the intent for
     text = "Hello"
