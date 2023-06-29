@@ -1,6 +1,8 @@
 import asyncio
-from pprint import pprint
+from fastapi import FastAPI, Query
 from rasa.core.agent import load_agent, Agent
+
+app = FastAPI()
 
 async def parse_text(agent: Agent, text):
     # Parse the text message
@@ -11,21 +13,16 @@ async def parse_text(agent: Agent, text):
         # Get the predicted intent
         intent = response['intent']['name']
 
-        # Print the predicted intent
-        print(f"Predicted intent: {intent}")
+        # Return the predicted intent
+        return {"Predicted intent": intent}
     else:
         # No intent was predicted
-        print("No intent was predicted for this text.")
+        return {"Predicted intent": "No intent was predicted for this text."}
 
-async def main():
+@app.get("/")
+async def predict_intent(text: str = Query(..., description="The text to predict the intent for")):
     # Load the trained model
     agent = await load_agent("models/20230621-125102-quiet-phrase.tar.gz")
 
-    # Define the text to predict the intent for
-    text = "Hello"
-
     # Run intent recognition
-    await parse_text(agent, text)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    return await parse_text(agent, text)
