@@ -5,9 +5,17 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - thank_you
+  - apology
+  - request_help
+  - inform_problem
+  - ask_question
+  - make_suggestion
+  - give_compliment
+  - express_concern
+  - express_happiness
+  - express_sadness
+  - express_surprise
 
 responses:
   utter_greet:
