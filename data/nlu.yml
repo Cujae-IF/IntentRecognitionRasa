@@ -3,89 +3,272 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - Hi
+    - Hello
+    - Hey there
+    - Good morning
+    - Good afternoon
+    - Good evening
+    - Hi there
+    - Hey
+    - Howdy
+    - Greetings
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - Bye
+    - Goodbye
+    - See you later
+    - Farewell
+    - Bye bye
+    - So long
+    - Take care
+    - See ya
+    - Adios
+    - Ciao
 
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - Yes
+    - Sure
+    - Of course
+    - Definitely
+    - Absolutely
+    - Yeah
+    - Yup
+    - Indeed
+    - Affirmative
+    - Certainly
 
 - intent: deny
   examples: |
-    - no
-    - n
-    - never
+    - No
+    - Not really
     - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - Nope
+    - Negative
+    - No way
+    - Nuh-uh
+    - Not at all
+    - I'm afraid not
+    - Not likely
 
-- intent: mood_great
+- intent: thank_you
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - Thank you
+    - Thanks a lot 
+    - Thanks
+    - Thank you very much
+    - I appreciate it
+    - Much appreciated
+    - That's very kind of you
+    - You're the best
+    - Thanks a bunch
 
-- intent: mood_unhappy
+- intent: apology
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - Sorry
+    - My apologies
+    - I'm sorry
+    - I apologize
+    - Pardon me
+    - Excuse me
+    - Forgive me
+    - My bad
+    - I didn't mean to do that
+    - So sorry
 
-- intent: bot_challenge
+- intent: request_help
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - Can you help me?
+    - I need some help
+    - Can you assist me?
+    - Could you lend me a hand?
+    - I could use some assistance
+    - Can you give me a hand?
+    - Would you mind helping me?
+    - I need your help
+    - Can you help me out?
+    - Help me please
+
+- intent: inform_problem
+  examples: |
+    - There's a problem
+    - Something's not right
+    - I'm having an issue
+    - There's something wrong
+    - I'm experiencing a problem
+    - Something's not working
+    - I have a problem
+    - There's an issue
+    - Something's gone wrong
+    - I'm having trouble
+
+- intent: ask_question
+  examples: |
+    - Can you tell me something?
+    - I have a question
+    - Can I ask you something?
+    - Could you answer a question for me?
+    - I was wondering if you could help me with something
+    - Can you help me understand something?
+    - Would you mind answering a question for me?
+    - Can you provide some information?
+    - I need some information
+    - Can you clarify something for me?
+
+- intent: make_suggestion
+  examples: |
+    - Maybe we could try this
+    - How about we do this
+    - What if we did this
+    - I have an idea
+    - Here's a suggestion
+    - Why don't we try this
+    - Let's do this instead
+    - Have you considered this
+    - What about this idea
+    - This might work
+
+- intent: give_compliment
+  examples: |
+    - You're doing great
+    - That's amazing
+    - You're awesome
+    - Great job
+    - Well done
+    - Keep up the good work
+    - You're fantastic
+    - That's impressive
+    - Excellent work
+    - You're doing a wonderful job
+
+- intent: express_concern
+  examples: |
+    - I'm worried about this
+    - This is concerning
+    - I'm not sure about this
+    - This doesn't seem right
+    - I'm a bit uneasy about this
+    - This is making me anxious
+    - I'm not feeling good about this
+    - This is troubling me
+    - I have some reservations about this
+    - This is bothering me
+
+- intent: express_happiness
+  examples: |
+    - I'm so happy
+    - This is great news
+    - I'm thrilled about this
+    - This is fantastic
+    - I'm over the moon about this
+    - This has made my day
+    - I'm delighted about this
+    - This is wonderful news
+    - I'm so pleased about this
+    - This is such a joy
+
+- intent: express_sadness
+  examples: |
+    - I'm feeling sad
+    - This is really upsetting
+    - I'm heartbroken about this
+    - This is really getting me down
+    - I'm feeling really low about this
+    - This is such a disappointment
+    - I'm feeling really unhappy about this
+    - This is so depressing
+    - I'm feeling really down about this
+    - This is such a letdown
+
+- intent: express_surprise
+  examples: |
+    - Wow, I wasn't expecting that
+    - That's a surprise
+    - I didn't see that coming
+    - That's unexpected
+    - I'm taken aback by that
+    - That's quite a shock
+    - That's really surprising
+    - I'm really surprised by that
+    - That's caught me off guard
+    - That's quite astonishing
+
+- intent: express_disappointment
+  examples: |
+    - That's really disappointing
+    - I'm so let down by this
+    - This is such a bummer
+    - I was really hoping for something else
+    - This is not what I wanted
+    - This is really disheartening
+    - I'm really disappointed by this
+    - This is not what I was expecting
+    - This is such a letdown
+    - I'm really bummed out about this
+
+- intent: express_gratitude
+  examples: |
+    - Thank you so much
+    - I'm really grateful for this
+    - I can't thank you enough
+    - I really appreciate this
+    - You have my deepest thanks
+    - This means so much to me, thank you
+    - I'm so thankful for this
+    - You have no idea how much this means to me, thank you
+    - I'm forever grateful for this
+    - My sincerest thanks to you
+
+- intent: express_anger
+  examples: |
+    - I'm really angry about this
+    - This is making me so mad
+    - I'm fuming about this
+    - This is really getting on my nerves
+    - I'm so frustrated by this
+    - This is really ticking me off
+    - I'm really annoyed by this
+    - This is driving me crazy
+    - I'm so irritated by this
+    - This is really getting under my skin
+
+- intent: express_fear
+  examples: |
+    - I'm really scared about this
+    - This is making me so nervous
+    - I'm really frightened by this
+    - This is giving me the creeps
+    - I'm really afraid of this
+    - This is making me feel uneasy
+    - I'm really anxious about this
+    - This is making me feel worried
+    - I'm really apprehensive about this
+    - This is making me feel scared
+
+- intent: express_excitement
+  examples: |
+    - I'm so excited about this
+    - This is making me feel so pumped
+    - I'm really looking forward to this
+    - This is making me feel so energized
+    - I'm really thrilled about this
+    - This is making me feel so enthusiastic
+    - I'm really eager for this
+    - This is making me feel so excited
+    - I'm really stoked about this
+    - This is making me feel so hyped
+
+- intent: express_love
+  examples: |
+    - I love this so much
+    - This is making me feel so warm and fuzzy inside
+    - I'm really in love with this
+    - This is making me feel so happy and content
+    - I'm really fond of this
+    - This is making me feel so loved and appreciated
+    - I'm really smitten with this
+    - This is making me feel so cherished and valued
+    - I'm really enamored with this
+    - This is making me feel so adored and treasured
