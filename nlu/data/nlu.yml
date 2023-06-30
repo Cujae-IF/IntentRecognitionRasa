@@ -272,3 +272,10 @@ nlu:
     - This is making me feel so cherished and valued
     - I'm really enamored with this
     - This is making me feel so adored and treasured
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
