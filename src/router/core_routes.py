@@ -15,6 +15,7 @@ class CoreRoutes(ABC):
     def api_key_dependency(self):
         def authenticate(request: Request):
             api_key = request.headers.get(self.security.name)
+            #TODO: move this key to an .env file
             if not api_key or api_key != "mysecretkey":
                 raise HTTPException(status_code=401, detail="Unauthorized")
         return authenticate
