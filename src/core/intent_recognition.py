@@ -30,9 +30,17 @@ class RasaIntentRecognizer(IntentRecognizer):
             return {"Predicted intent": "No intent was predicted for this text."}
 
 
-class RasaAgentLoader:
+class NluLoader(ABC):
     @staticmethod
-    async def load_agent():
+    @abstractmethod
+    async def load_nlu():
+        pass
+
+
+
+class RasaAgentLoader(NluLoader):
+
+    async def load_nlu():
         # Get the list of all files in the models directory
         model_files = os.listdir("nlu/models")
         # Filter out files that are not .tar.gz files
