@@ -37,9 +37,7 @@ class NluLoader(ABC):
         pass
 
 
-
 class RasaAgentLoader(NluLoader):
-
     async def load_nlu():
         # Get the list of all files in the models directory
         model_files = os.listdir("nlu/models")
