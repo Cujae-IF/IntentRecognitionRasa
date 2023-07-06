@@ -7,6 +7,6 @@ app.include_router(v1_router, prefix="/api/v1")
 
 @app.on_event("startup")
 async def on_startup():
-    agent = await RasaAgentLoader.load_agent()
+    agent = await RasaAgentLoader.load_nlu()
     intent_recognizer = RasaIntentRecognizer(agent)
     app.dependency_overrides[IntentRecognizer] = lambda: intent_recognizer
