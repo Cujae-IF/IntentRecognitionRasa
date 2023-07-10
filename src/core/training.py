@@ -1,4 +1,4 @@
-import rasa, os
+import rasa, os, subprocess
 from typing import List
 from ruamel.yaml import YAML
 
@@ -11,14 +11,10 @@ models = "nlu/models/"
 
 
 async def train_model_rasa(model_name: str = None):
-    if model_name:
-        output = f"{models}{model_name}"
-    else:
-        output = f"{models}"
-
     # Train the model
-    model_path = await rasa.train(domain, config, [training_files], output)
-    print(f"Model trained. The model path is {model_path}.")
+    command = f"rasa train -c {config} -d {domain} --out {models} --fixed-model-name {model_name} --data {training_files}"
+    subprocess.run(command.split())
+    print(f"Model trained. The model path is {models}{model_name}.")
 
 
 def create_intent(intent_name: str, examples: List[str]):
@@ -74,7 +70,7 @@ def delete_intent(intent_name: str):
         nlu_data = yaml.load(f)
 
     # Remove the training examples for the intent from the NLU training data file
-    nlu_data = [example for example in nlu_data if example.get('intent') != intent_name]
+    nlu_data = [example for example in nlu_data['nlu'] if example['intent'] != intent_name]
 
     # Save the updated NLU training data file
     with open(f'{training_files}nlu.yml', 'w') as f:
