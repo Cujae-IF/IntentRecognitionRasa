@@ -38,7 +38,7 @@ class NluLoader(ABC):
 
 
 class RasaAgentLoader(NluLoader):
-    async def load_nlu():
+    async def load_nlu() -> Agent:
         # Get the list of all files in the models directory
         model_files = os.listdir("nlu/models")
         # Filter out files that are not .tar.gz files
