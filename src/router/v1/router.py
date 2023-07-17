@@ -1,11 +1,11 @@
 from fastapi import APIRouter
 from fastapi.security import APIKeyHeader
-from src.router.v1.intent_recognition import IntentRecognition
-from src.router.v1.training import TrainingRoutes
+from src.router.v1.intent import IntentRoutes
+from src.router.v1.models import ModelRoutes
 
 
 router = APIRouter()
 security = APIKeyHeader(name="X-Secret-Key", auto_error=False)
 
-IntentRecognition(router, security).init_routes()
-TrainingRoutes(router, security).init_routes()
+IntentRoutes(router, security).init_routes()
+ModelRoutes(router, security).init_routes()

@@ -15,7 +15,7 @@ class TestTrainingRoutes(asynctest.TestCase):
 
     async def test_train_model_rasa_endpoint(self):
         # Train the model
-        response = client.post("/api/v1/train_model_rasa?model_name=test_model")
+        response = client.post("/api/v1/models", json={"name": "test_model"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"message": "Model trained successfully"})
 
@@ -24,7 +24,7 @@ class TestTrainingRoutes(asynctest.TestCase):
 
     def test_create_intent_endpoint(self):
         # Create the intent
-        response = client.post("/api/v1/create_intent", json={"intent_name": "test_intent", "examples": ["example1", "example2"]})
+        response = client.post("/api/v1/intents", json={"name": "test_intent", "examples": ["example1", "example2"]})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"message": "Intent created successfully"})
 
@@ -43,7 +43,7 @@ class TestTrainingRoutes(asynctest.TestCase):
 
     def test_update_intent_endpoint(self):
         # Update the intent
-        response = client.put("/api/v1/update_intent", json={"intent_name": "test_intent", "examples": ["new_example1", "new_example2"]})
+        response = client.put("/api/v1/intents/test_intent", json={"examples": ["new_example1", "new_example2"]})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"message": "Intent updated successfully"})
 
@@ -55,7 +55,7 @@ class TestTrainingRoutes(asynctest.TestCase):
 
     def test_delete_intent_endpoint(self):
         # Delete the intent
-        response = client.delete("/api/v1/delete_intent?intent_name=test_intent")
+        response = client.delete("/api/v1/intents/test_intent")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"message": "Intent deleted successfully"})
 
@@ -67,7 +67,7 @@ class TestTrainingRoutes(asynctest.TestCase):
 
     def test_delete_all_intents_endpoint(self):
         # Delete all intents
-        response = client.delete("/api/v1/delete_all_intents")
+        response = client.delete("/api/v1/intents")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"message": "All intents deleted successfully"})
 

@@ -6,7 +6,6 @@ from abc import ABC, abstractmethod
 class CoreRoutes(ABC):
     router: APIRouter
     security: APIKeyHeader
-    nextcloud_url: str
 
     def __init__(self, router: APIRouter, security: APIKeyHeader):
         self.router = router
