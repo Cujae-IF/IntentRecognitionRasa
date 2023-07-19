@@ -9,6 +9,7 @@ class IntentRecognizer(ABC):
     async def parse_text(self, text: str):
         pass
 
+Agent
 
 class RasaIntentRecognizer(IntentRecognizer):
     def __init__(self, agent: Agent):
@@ -24,10 +25,10 @@ class RasaIntentRecognizer(IntentRecognizer):
             intent = response['intent']['name']
 
             # Return the predicted intent
-            return {"Predicted intent": intent}
+            return {"intent": intent}
         else:
             # No intent was predicted
-            return {"Predicted intent": "No intent was predicted for this text."}
+            return {"intent": "No intent was predicted for this text."}
 
 
 class NluLoader(ABC):
@@ -38,7 +39,9 @@ class NluLoader(ABC):
 
 
 class RasaAgentLoader(NluLoader):
-    async def load_nlu() -> Agent:
+    async def load_nlu(name: str = None) -> Agent:
+        if name:
+            return await load_agent(os.path.join("nlu/models", name))
         # Get the list of all files in the models directory
         model_files = os.listdir("nlu/models")
         # Filter out files that are not .tar.gz files
@@ -49,4 +52,5 @@ class RasaAgentLoader(NluLoader):
         most_recent_model_file = model_files[0]
         print(most_recent_model_file)
         # Load the most recent model
+        # agent = Agent()
         return await load_agent(os.path.join("nlu/models", most_recent_model_file))

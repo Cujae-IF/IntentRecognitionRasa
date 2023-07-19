@@ -7,13 +7,14 @@ import shutil
 
 client = TestClient(app)
 
+# TODO: Add a testcase where the trained model is used for intent recognition
 class TestTrainingRoutes(asynctest.TestCase):
     def setUp(self):
         # Backup the original domain and NLU training data files
         shutil.copyfile(domain, f"{domain}.bak")
         shutil.copyfile(f"{training_files}nlu.yml", f"{training_files}nlu.yml.bak")
 
-    async def test_train_model_rasa_endpoint(self):
+    def test_train_model_rasa_endpoint(self):
         # Train the model
         response = client.post("/api/v1/models", json={"name": "test_model"})
         self.assertEqual(response.status_code, 200)
@@ -79,8 +80,8 @@ class TestTrainingRoutes(asynctest.TestCase):
 
     def tearDown(self):
         # Delete the trained model
-        if os.path.exists(f"{models}test_model"):
-            shutil.rmtree(f"{models}test_model")
+        if os.path.exists(f"{models}test_model.tar.gz"):
+            shutil.rmtree(f"{models}test_model.tar.gz")
 
         # Restore the original domain and NLU training data files
         shutil.move(f"{domain}.bak", domain)

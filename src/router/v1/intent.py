@@ -1,7 +1,7 @@
 from src.router.core_routes import CoreRoutes
 from fastapi import Query, Depends
 from src.core.training import *
-from src.core.intent_recognition import IntentRecognizer
+from src.core.intent_recognition import IntentRecognizer, RasaAgentLoader, RasaIntentRecognizer
 from pydantic import BaseModel
 from typing import Optional
 
@@ -16,8 +16,11 @@ class IntentRoutes(CoreRoutes):
         @self.router.get("/intents", dependencies=[Depends(self.api_key_dependency)])
         async def predict_intent(
             text: str = Query(..., description="The text to predict the intent for"), 
+            model: str | None = None,
             agent: IntentRecognizer = Depends()
         ):
+            if model:
+                agent = RasaIntentRecognizer(await RasaAgentLoader.load_nlu(model))
             # Run intent recognition
             return await agent.parse_text(text)
         
